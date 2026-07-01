@@ -5,7 +5,7 @@ import { getWorldArticles } from "@/lib/data.functions";
 import { SiteHeader } from "@/components/SiteHeader";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMeta, canonicalLinks, absUrl } from "@/lib/seo";
-import { siteName } from "@/lib/city";
+import { cityName, siteName } from "@/lib/city";
 import type { ArticleRow } from "@/lib/schema";
 import { formatDate } from "@/lib/date";
 
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/world")({
     meta: buildMeta({
       title: `${LABEL} | ${siteName()}`,
       description:
-        "The world, explained for Australia. Evergreen explainers from The Daily World desk.",
+        `World news and global affairs, in context for ${cityName()} readers.`,
       path: "/world",
     }),
     links: canonicalLinks("/world"),
@@ -79,7 +79,7 @@ function WorldPage() {
           <a href="/">Home</a> &nbsp;/&nbsp; <span>{LABEL}</span>
         </nav>
         <h1 className="h1-news">{LABEL}</h1>
-        <p className="dek mt-2">The world, explained for Australia.</p>
+        <p className="dek mt-2">Global news, explained in context.</p>
         <div aria-hidden className="mt-6 hairline" />
         {data.rows.length === 0 ? (
           <p className="mt-10 meta">No world stories published yet.</p>
